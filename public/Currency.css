@@ -1,0 +1,89 @@
+.currency-icon {
+  height: 50px;
+  width: 50px;
+  background-color: #007bff;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 90px;
+  right: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+}
+
+.currency-converter {
+  position: fixed;
+  bottom: 155px;
+  right: 55px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 999;
+  /* Đảm bảo hiển thị trên các phần tử khác */
+}
+
+.currency-converter.show {
+  border-radius: 10px;
+  position: fixed;
+  display: block;
+  bottom: 145px;
+  right: 55px;
+  width: 400px;
+  height: 250px;
+}
+
+.dropdowns {
+  margin-left: -28px;
+  text-align: center;
+}
+
+.input-section {
+  margin-top: 20px;
+  margin-left: 143px;
+}
+
+.header {
+  border-radius: 10px 10px 0 0;
+  background-color: #007bff;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+}
+
+h1 {
+  color: red;
+  position: absolute;
+  top: calc(50% - 2em);
+  /* Giữa màn hình */
+  left: calc(70% - 3em);
+  /* Giữa màn hình */
+  margin: 3cm 0;
+  /* Khoảng cách từ phía trên */
+  text-align: center;
+  /* Căn giữa nội dung */
+}
+
+.convert-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 136px;
+}
+
+.result-text {
+  margin-top: 30px;
+  margin-left: 115px;
+}
+
+/* 
+.hide {
+  display: none;
+} */

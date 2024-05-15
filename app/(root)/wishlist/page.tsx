@@ -57,14 +57,14 @@ const Wishlist = () => {
 
   return loading ? <Loader /> : (
     <div className="px-10 py-5">
-      <p className="text-heading3-bold my-10">Your Wishlist</p>
+      <p className="text-heading3-bold my-10">Các tour bạn đã tim</p>
       {wishlist.length === 0 && (
-        <p>No items in your wishlist</p>
+        <p>Chưa có tour yêu thích nào</p>
       )}
 
       <div className="flex flex-wrap justify-center gap-16">
-        {wishlist.map((product) => (
-          <ProductCard key={product._id} product={product} updateSignedInUser={updateSignedInUser}/>
+        {wishlist.map((product, index) => (
+          <ProductCard key={index} product={product} updateSignedInUser={updateSignedInUser} />
         ))}
       </div>
     </div>

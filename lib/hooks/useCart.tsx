@@ -5,8 +5,6 @@ import { persist, createJSONStorage } from "zustand/middleware";
 interface CartItem {
   item: ProductType;
   quantity: number;
-  color?: string; // ? means optional
-  size?: string; // ? means optional
 }
 
 interface CartStore {
@@ -23,7 +21,7 @@ const useCart = create(
     (set, get) => ({
       cartItems: [],
       addItem: (data: CartItem) => {
-        const { item, quantity, color, size } = data;
+        const { item, quantity} = data;
         const currentItems = get().cartItems; // all the items already in cart
         const isExisting = currentItems.find(
           (cartItem) => cartItem.item._id === item._id
@@ -33,7 +31,7 @@ const useCart = create(
           return toast("Item already in cart");
         }
 
-        set({ cartItems: [...currentItems, { item, quantity, color, size }] });
+        set({ cartItems: [...currentItems, { item, quantity }] });
         toast.success("Item added to cart", { icon: "🛒" });
       },
       removeItem: (idToRemove: String) => {

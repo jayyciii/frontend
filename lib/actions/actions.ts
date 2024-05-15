@@ -1,7 +1,25 @@
 export const getCollections = async () => {
-  const collections = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`)
-  return await collections.json()
+  let allCollections: any[] = [];
+  let page = 1;
+  let totalPages = 1;
+
+  // Lặp qua các trang cho đến khi lấy hết tất cả các bộ sưu tập
+  while (page <= totalPages) {
+    // Gọi API để lấy bộ sưu tập từ trang hiện tại
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections?page=${page}`);
+    const data = await response.json();
+
+    // Thêm bộ sưu tập từ trang hiện tại vào mảng allCollections
+    allCollections = [...allCollections, ...data];
+
+    // Cập nhật số trang hiện tại và tổng số trang
+    page++;
+    totalPages = data.totalPages; // Giả sử API trả về thông tin về tổng số trang
+  }
+
+  return allCollections;
 }
+
 
 export const getCollectionDetails = async (collectionId: string) => {
   const collection = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections/${collectionId}`)
@@ -9,9 +27,27 @@ export const getCollectionDetails = async (collectionId: string) => {
 }
 
 export const getProducts = async () => {
-  const products = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`)
-  return await products.json()
+  let allProducts: any[] = [];
+  let page = 1;
+  let totalPages = 1;
+
+  // Lặp qua các trang cho đến khi lấy hết tất cả các sản phẩm
+  while (page <= totalPages) {
+    // Gọi API để lấy sản phẩm từ trang hiện tại
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products?page=${page}`);
+    const data = await response.json();
+
+    // Thêm sản phẩm từ trang hiện tại vào mảng allProducts
+    allProducts = [...allProducts, ...data];
+
+    // Cập nhật số trang hiện tại và tổng số trang
+    page++;
+    totalPages = data.totalPages; // Giả sử API trả về thông tin về tổng số trang
+  }
+
+  return allProducts;
 }
+
 
 export const getProductDetails = async (productId: string) => {
   const product = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`)
